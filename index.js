@@ -19,10 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 element.querySelector('.color__name').innerHTML = elementColor;
                 element.style.backgroundColor = elementColor;
                 element.querySelector('.color__copy').addEventListener('click', () => copyColor(elementColor, element.querySelector('.action-buttons')))
-                element.querySelector('.color__lock').addEventListener('click', function (e) {
-                    e.target.closest('.color').classList.toggle('locked')
-                }) 
-            }            
+                element.querySelector('.color__lock').addEventListener('click', () => element.classList.add('locked')) 
+            } else {
+                element.querySelector('.color__lock').addEventListener('click', () => element.classList.remove('locked')) 
+            }       
         });
     }
 
