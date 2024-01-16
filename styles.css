@@ -13,14 +13,34 @@ body {
   font-family: "Poppins", sans-serif; }
 
 .colors {
-  display: flex; }
+  display: flex;
+  height: 100vh; }
+  @media only screen and (max-width: 1024px) {
+    .colors {
+      flex-direction: column;
+      height: calc(100vh - 60px); } }
 
 .color {
   flex: 0 0 20%;
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  padding: 40px; }
+  flex-direction: column; }
+  @media only screen and (min-width: 1241px) {
+    .color {
+      padding: 40px; } }
+  @media only screen and (max-width: 1240px) {
+    .color {
+      padding: 30px; } }
+  @media only screen and (max-width: 1024px) {
+    .color {
+      padding: 20px;
+      height: 20%;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between; } }
+  @media only screen and (max-width: 640px) {
+    .color {
+      padding: 15px; } }
   .color__name {
     color: #fff;
     font-weight: 700;
@@ -29,6 +49,13 @@ body {
     background: rgba(0, 0, 0, 0.5);
     padding: 10px;
     border-radius: 5px; }
+    @media only screen and (max-width: 1024px) {
+      .color__name {
+        width: 200px; } }
+    @media only screen and (max-width: 640px) {
+      .color__name {
+        font-size: 20px;
+        width: 160px; } }
   .color__copy:before {
     content: '\edea'; }
   .color__lock:before {
@@ -37,6 +64,19 @@ body {
     margin: auto 0 40px;
     text-align: center;
     position: relative; }
+    @media (min-width: 1025px) and (max-width: 1240px) {
+      .color .action-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center; } }
+    @media only screen and (max-width: 1024px) {
+      .color .action-buttons {
+        padding: 20px;
+        margin: 0; } }
+    @media only screen and (max-width: 640px) {
+      .color .action-buttons {
+        display: flex;
+        padding: 0; } }
     .color .action-buttons button {
       border: none;
       width: 60px;
@@ -47,6 +87,15 @@ body {
       font-size: 18px;
       background-color: #efefef;
       color: #333333; }
+      @media (min-width: 1025px) and (max-width: 1240px) {
+        .color .action-buttons button {
+          margin: 10px 0; } }
+      @media only screen and (max-width: 640px) {
+        .color .action-buttons button {
+          width: 36px;
+          height: 36px;
+          margin: 0 5px;
+          font-size: 14px; } }
       .color .action-buttons button:hover {
         background-color: #333333;
         color: #efefef; }
@@ -75,20 +124,39 @@ body {
   transform: translate(0, -50%);
   border: none;
   line-height: 60px;
-  background-color: #819230;
-  padding: 0 40px 0 60px;
+  background-color: #efefef;
+  color: #333333;
+  padding: 0 30px;
   font-size: 16px;
   font-weight: 700;
-  color: #fff;
-  border-radius: 60px; }
+  border-radius: 60px;
+  transition: all .2s ease;
+  display: flex;
+  align-items: center; }
+  .generate-palette:hover {
+    top: calc(50% + 2px); }
+    @media only screen and (max-width: 1024px) {
+      .generate-palette:hover {
+        top: unset; } }
+  .generate-palette:hover:before {
+    transform: rotate(180deg); }
   .generate-palette:before {
     content: '\efd1';
+    line-height: 1;
     font-family: "IcoFont";
     font-size: 24px;
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translate(0, -50%); }
+    margin: 0 20px 0 0;
+    transition: all .2s ease; }
+  @media only screen and (max-width: 1024px) {
+    .generate-palette {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      top: unset;
+      width: 100%;
+      border-radius: 0;
+      transform: none;
+      justify-content: center; } }
 
 button {
   cursor: pointer;

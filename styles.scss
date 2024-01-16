@@ -1,4 +1,5 @@
 @import '_typo.scss';
+@import '_vars.scss';
 
 * {
     box-sizing: border-box;
@@ -12,6 +13,12 @@ body {
 
 .colors {
     display: flex;
+    height: 100vh;
+
+    @include mobile-l {
+        flex-direction: column;
+        height: calc(100vh - 60px);
+    }
 }
 
 .color {
@@ -19,7 +26,26 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 40px;
+
+    @include desktop {
+        padding: 40px;
+    }
+
+    @include tablet {
+        padding: 30px;
+    }
+
+    @include mobile-l {
+        padding: 20px;
+        height: 20%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    @include mobile-p {
+        padding: 15px;
+    }
 
     &__name {
         color: #fff;
@@ -29,6 +55,15 @@ body {
         background: rgba(0,0,0,.5);
         padding: 10px;
         border-radius: 5px;
+
+        @include mobile-l {
+            width: 200px;
+        }
+
+        @include mobile-p {
+            font-size: 20px;
+            width: 160px;
+        }
     }
 
     &__copy:before {
@@ -44,6 +79,22 @@ body {
         text-align: center;
         position: relative;
 
+        @include only-tablet {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @include mobile-l {
+            padding: 20px;
+            margin: 0;
+        }
+
+        @include mobile-p {
+            display: flex;
+            padding: 0;
+        }
+
         button {
             border: none;
             width: 60px;
@@ -54,6 +105,17 @@ body {
             font-size: 18px;
             background-color: #efefef;
             color: #333333;
+
+            @include only-tablet {
+                margin: 10px 0;
+            }
+
+            @include mobile-p {
+                width: 36px;
+                height: 36px;
+                margin: 0 5px;
+                font-size: 14px;
+            }
 
             &:hover{
                 background-color: #333333;
@@ -95,21 +157,46 @@ body {
     transform: translate(0, -50%);
     border: none;
     line-height: 60px;
-    background-color: #819230;
-    padding: 0 40px 0 60px;
+    background-color: #efefef;
+    color: #333333;
+    padding: 0 30px;
     font-size: 16px;
     font-weight: 700;
-    color: #fff;
     border-radius: 60px;
+    transition: all .2s ease;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        top: calc(50% + 2px);
+
+        @include mobile-l {
+            top: unset;
+        }
+    }
+
+    &:hover:before {
+        transform: rotate(180deg);
+    }
 
     &:before {
         content: '\efd1';
+        line-height: 1;
         font-family: $icon-font;
         font-size: 24px;
-        position: absolute;
-        left: 20px;
-        top: 50%;
-        transform: translate(0, -50%)
+        margin: 0 20px 0 0;
+        transition: all .2s ease;
+    }
+
+    @include mobile-l {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        top: unset;
+        width: 100%;
+        border-radius: 0;
+        transform: none;
+        justify-content: center;
     }
 }
 
